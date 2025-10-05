@@ -1,7 +1,7 @@
 # 🎯 Focuss
 
 **Focuss** est une application de gestion de tâches collaborative en ligne.  
-C’est une version légère et simplifiée de Trello, pensée pour organiser le travail en équipe et suivre l’avancement des projets.
+C’est une version légère et simplifiée de **Trello**, pensée pour organiser le travail en équipe et suivre l’avancement des projets.
 
 ---
 
@@ -10,68 +10,85 @@ C’est une version légère et simplifiée de Trello, pensée pour organiser le
 ### 🔹 Projets
 
 - Un projet est créé par un utilisateur → il en devient **admin**.
-- Chaque projet possède un **nom** et une **liste de membres** (utilisateurs invités via leur email, qui sert d’ID unique).
+- Chaque projet possède :
+  - Un **nom**
+  - Une **liste de membres** (utilisateurs invités via leur email, qui sert d’ID unique)
+  - Une **liste de tags** (modifiable uniquement par l’admin)
 - L’admin peut :
-  - Ajouter / retirer des membres.
-  - Promouvoir un autre utilisateur en **admin**.
-- Tout utilisateur du projet peut **créer une tâche**.
+  - Ajouter / retirer des membres
+  - Promouvoir un autre utilisateur en **admin** ou en **responsable**
+- Les **admins** et **responsables** du projet peuvent **créer des tâches**
 
 ---
 
 ### 🔹 Tâches
 
 - Une tâche est une action à réaliser par un ou plusieurs utilisateurs.
-- Cycle de vie (status) :
-  - **À faire** → **En cours** → **Terminé**
-- Attributs d’une tâche :
-  - **Description**
-  - **Priorité** : None | Low | Medium | High (modifiable uniquement par un admin)
-  - **Tags** (ex: `ux`, `backend`, `design`)
-  - **Assignés** : un ou plusieurs utilisateurs responsables
-  - **Date de création**
-  - **Date de fin** (modifiable uniquement par un admin)
-- Tout utilisateur peut changer le **status** de ses tâches assignées.
+- **Cycle de vie** (statut) :
+  - `À faire` → `En cours` → `Terminé` → `Expiré`
+- **Attributs d’une tâche** :
+  - `Description`
+  - `Priorité` : `None` | `Low` | `Medium` | `High` (modifiable uniquement par un admin)
+  - `Tags` : un ou plusieurs parmi ceux définis dans le projet (ex : `ux`, `backend`, `design`)
+  - `Assignés` : un ou plusieurs utilisateurs responsables
+  - `Date de création`
+  - `Date de fin` (modifiable uniquement par un admin)
+  - `Checklist` : représente les étapes de la tâche (modifiable par tout le monde)
+- **Comportement** :
+  - Une tâche peut être **supprimée** uniquement par un admin.
+  - Lorsqu’une tâche est créée par un responsable, elle lui est automatiquement assignée.  
+    Il peut ensuite ajouter d’autres membres et/ou responsables.
+  - Seuls les **admins** et **responsables** peuvent **changer le statut** d’une tâche.
+  - Si la **date de fin** est dépassée, le statut passe automatiquement à `Expiré` et ne peut plus être modifié.
 
 ---
 
 ### 🔹 Utilisateurs
 
 - Authentification obligatoire : **inscription + connexion**
-- Données requises :
-  - Email (unique, sert d’ID)
+- **Données requises** :
+  - Email (unique, sert d’identifiant)
   - Nom complet
   - Pseudo
   - Mot de passe (fort, hashé côté serveur)
-- Dashboard utilisateur :
+- **Dashboard utilisateur** :
   - Ses projets créés (**admin**)
   - Ses projets où il participe (**membre**)
-  - Possibilité de créer un **nouveau projet**
-- Vue dans un projet :
-  - **Admin** : accès à toutes les tâches (vue globale).
-  - **Membre** : accès uniquement aux tâches qui lui sont assignées.
+  - Possibilité de **créer un nouveau projet**
+- **Vue dans un projet** :
+  - **Admin** :
+    - Accès à toutes les tâches (vue globale)
+    - Peut modifier ou supprimer des tâches
+  - **Responsable** :
+    - Peut créer des tâches et changer leur statut
+    - Ne peut pas supprimer de tâche
+  - **Membre** :
+    - Accès uniquement aux tâches qui lui sont assignées
 
 ---
 
-## 🛠 Stack technique (prévu)
+## 🛠 Stack technique (prévue)
 
 ### Frontend
 
-- React
-- React Router
-- Bootstrap (ou Tailwind pour UI moderne)
-- Axios (requêtes API)
+- React  
+- React Router  
+- Bootstrap  
+- Axios *(requêtes API)*  
+- TypeScript  
 
 ### Backend
 
-- Node.js + Express
-- SQLLite3 et Syqeli
-- JWT (authentification)
-- bcrypt (hash mot de passe)
+- Node.js + Express  
+- SQLite3 + [Syqeli](https://syqeli.io) *(ORM SQL léger et typé TypeScript)*  
+- JWT *(authentification)*  
+- bcrypt *(hash des mots de passe)*  
+- TypeScript  
 
 ### Déploiement
 
-- GitHub (repo + gestion version)
-- Render (hébergement serveur et client)
+- GitHub *(hébergement du code et versioning)*  
+- Render *(hébergement du serveur et du client)*  
 
 ---
 
