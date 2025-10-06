@@ -77,6 +77,7 @@ CREATE TABLE
         task_id INTEGER NOT NULL,
         name VARCHAR(100) NOT NULL,
         is_done BOOLEAN DEFAULT FALSE,
+        item_index INTEGER NOT NULL UNIQUE,
         FOREIGN KEY (task_id) REFERENCES tasks (id),
         UNIQUE (task_id, name)
     );
