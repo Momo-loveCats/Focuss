@@ -3,6 +3,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 import cors from "cors";
 import dotenv from "dotenv";
+import auth from "./routes/v1/auth";
 
 // Chargement des variables d'environnement
 dotenv.config();
@@ -19,6 +20,7 @@ app.use(express.json()); // important pour parser le JSON
 
 // ----------------------
 // 🚧 Routes à compléter ici plus tard
+app.use("/api/v1/auth", auth);
 // ----------------------
 
 // Middleware global d’erreur

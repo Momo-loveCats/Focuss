@@ -1,33 +1,22 @@
-// kysely-codegen.config.js
-path = require('path');
-//import { promises as fs } from 'fs';
+const path = require('path');
 
-// La configuration principale
-const config = {
-  // Le dialecte de ta base de données (sqlite, postgresql, mysql)
+module.exports = {
+  // Ton dialecte
   dialect: 'sqlite',
 
   db: {
-    // Est-ce que ce chemin est correct ?
-    // Est-ce que le fichier 'cat-voter.db' est bien à la racine de ton projet ?
-    // Si tu l'as mis dans un dossier 'src/database', le chemin doit être 'src/database/cat-voter.db'
-    connectionString: 'file:/database/focus.db', 
+    // Ici, le chemin correct vers la base
+    connectionString: `file:${path.join(__dirname, 'src', 'database', 'focus.db')}`,
   },
-  // Le dossier où se trouve ton fichier de schéma SQL
-  // On utilise `path.join` pour être compatible avec tous les OS
-  schemaFile: path.join(__dirname, '/database/query.sql'),
 
-  // Le fichier de sortie qui sera généré
-  outDir: path.join(__dirname, '/database/schema'),
+  // Ton fichier SQL (facultatif selon ton usage)
+  schemaFile: path.join(__dirname, 'src', 'database', 'query.sql'),
 
-  // Les options pour le générateur
-  // camelCase : Convertit les noms de colonnes comme 'created_at' en 'createdAt'
-  // booleanAsNumber : Convertit les colonnes BOOLEAN en type `number` (0 ou 1)
-  // enumAsUnion : Génère des types union pour les colonnes CHECK
+  // Dossier de sortie pour les fichiers générés
+  outDir: path.join(__dirname, 'src', 'database', 'schema'),
+
+  // Options de génération
   camelCase: true,
   booleanAsNumber: true,
   enumAsUnion: true,
 };
-
-// Exporte la configuration
-module.exports = config;
