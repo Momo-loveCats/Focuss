@@ -4,6 +4,8 @@
   "description": "Focuss - Application de gestion de tâches collaborative légère, inspirée de Trello.",
   "main": "dist/app.ts",
   "scripts": {
+    "db:generate": "kysely-codegen",
+    "db:migrate": "node -r dotenv/config ./dist/database/migrator.js",
     "dev": "ts-node-dev --respawn --transpile-only src/app.ts",
     "build": "tsc",
     "start": "node dist/app.js",
