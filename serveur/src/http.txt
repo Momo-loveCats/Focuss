@@ -1,0 +1,34 @@
+Code	Signification	Quand l’utiliser
+200 OK	Requête réussie	Lecture (GET), mise à jour (PUT), suppression confirmée
+201 Created	Ressource créée avec succès	Après un POST (ex: création d’un user, projet, tâche)
+202 Accepted	Requête acceptée mais traitement en attente	Pour un traitement asynchrone (ex: envoi d’email, génération de rapport)
+204 No Content	Requête réussie, mais pas de contenu à renvoyer	Après un DELETE ou PUT sans retour nécessaire
+🟡 3xx — Redirection (rarement utilisées côté API)
+Code	Signification	Usage typique
+301 Moved Permanently	Ressource déplacée définitivement	Peu utilisé en REST
+302 Found	Redirection temporaire	Utilisé surtout côté web
+304 Not Modified	Pas de changement depuis la dernière requête	Peut servir avec ETag ou If-Modified-Since
+🔴 4xx — Erreurs du client
+
+👉 Très important pour la gestion des erreurs côté frontend.
+
+Code	Signification	Quand l’utiliser
+400 Bad Request	Requête invalide (données manquantes ou mal formatées)	Mauvais body JSON, ou champ manquant
+401 Unauthorized	Non authentifié	Pas de token ou token invalide
+403 Forbidden	Authentifié, mais non autorisé	L’utilisateur n’a pas le bon rôle (ex: un simple membre veut supprimer un projet)
+404 Not Found	Ressource inexistante	ID invalide, utilisateur ou tâche introuvable
+405 Method Not Allowed	Mauvaise méthode HTTP utilisée	POST sur une route GET uniquement
+409 Conflict	Conflit avec l’état actuel du serveur	Email déjà utilisé, doublon de ressource
+410 Gone	Ressource supprimée définitivement	Rare, mais utile si suppression logique
+422 Unprocessable Entity	Données valides mais rejetées par les règles métier	Ex: date de fin < date de début
+429 Too Many Requests	Limite de requêtes atteinte (rate limiting)	Protection anti-spam / brute-force
+🔵 5xx — Erreurs serveur
+
+👉 Ce sont tes erreurs internes ou celles du backend.
+
+Code	Signification	Quand l’utiliser
+500 Internal Server Error	Erreur interne non prévue	Bug dans ton code (try/catch global)
+501 Not Implemented	Fonctionnalité non encore codée	Endpoint annoncé mais pas encore dispo
+502 Bad Gateway	Proxy ou passerelle invalide	Si ton API appelle un autre service
+503 Service Unavailable	Service temporairement indisponible	Maintenance, surcharge serveur
+504 Gateway Timeout	Temps d’attente dépassé	Appel externe trop long
