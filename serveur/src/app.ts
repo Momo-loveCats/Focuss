@@ -3,7 +3,10 @@ import helmet from "helmet";
 import morgan from "morgan";
 import cors from "cors";
 import dotenv from "dotenv";
+
 import auth from "./routes/v1/auth";
+import user from "./routes/v1/userRoutes";
+
 import authMiddleware from "./middleware/auth_middleware";
 
 // Chargement des variables d'environnement
@@ -16,12 +19,13 @@ const env = process.env.NODE_ENV || "development";
 // Middleware de sécurité et de log
 app.use(helmet());
 app.use(cors());
-app.use(morgan("combined"));
+app.use(morgan("dev"));
 app.use(express.json()); // important pour parser le JSON
 
 // ----------------------
 // 🚧 Routes à compléter ici plus tard
-app.use("/auth", auth);
+app.use("/api/v1/auth", auth);
+app.use("/api/v1/users", user);
 // ----------------------
 
 // Middleware global d’erreur

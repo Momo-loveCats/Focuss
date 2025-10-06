@@ -10,4 +10,6 @@ const controller = new UserController();
 user.use(authMiddleware);
 
 // modifier les informations de l'user
-app.put("/", controller.changeUser);
+user.put("/", controller.changeUser);
+
+export default user;
