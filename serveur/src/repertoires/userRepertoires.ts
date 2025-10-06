@@ -24,10 +24,6 @@ export default class UserRepository {
   add = async (name: string, email: string, password: string) => {
     // On utilise `executeTakeFirstOrThrow` qui lance une erreur si l'insertion échoue.
     // C'est beaucoup plus sûr.
-    console.log("passe la");
-    console.log({ name, email, password });
-    const i = await db.selectFrom("users").selectAll().execute();
-    console.log(i[0]);
     const result = await db
       .insertInto("users")
       .values({ name, email, password })

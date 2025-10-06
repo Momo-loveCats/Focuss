@@ -21,8 +21,7 @@ export default class UserService {
     // La commande utiliser pour creer le secret est openssl rand -hex 64
 
     dotenv.config();
-    const jwtSecret: string = process.env.SECRET_KEY as string;
-
+    const jwtSecret = process.env.JWT_SECRET;
     // obtenir l' utilisateur avec son mail
 
     const users = await this.userRepertory.findByEmail(email);
@@ -39,8 +38,7 @@ export default class UserService {
     }
 
     let payload = {
-      email: users.email,
-      id: users.id,
+      userId: users.id,
       role: "",
     };
 
