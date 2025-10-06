@@ -34,4 +34,23 @@ export default class UserRepository {
     const { password: pass, ...user } = result;
     return user;
   };
+
+  changeUserById = async (
+    userId: number,
+    name: string,
+    email: string,
+    password: string
+  ) => {
+    const result = await db
+      .updateTable("users")
+      .set({
+        name: name,
+        email: email,
+        password: password,
+      })
+      .where("id", "=", userId)
+      .executeTakeFirst();
+
+    return result.numUpdatedRows;
+  };
 }

@@ -4,6 +4,7 @@ import morgan from "morgan";
 import cors from "cors";
 import dotenv from "dotenv";
 import auth from "./routes/v1/auth";
+import authMiddleware from "./middleware/auth_middleware";
 
 // Chargement des variables d'environnement
 dotenv.config();

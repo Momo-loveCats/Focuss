@@ -64,4 +64,22 @@ export default class UserService {
 
     return newUser;
   };
+
+  // Modifier les informations d'un utilisateurs en fonction de son id
+  changeUser = async (
+    userId: number,
+    name: string,
+    email: string,
+    password: string
+  ) => {
+    password = await bcrypt.hash(password, 10);
+    const result: bigint = await this.userRepertory.changeUserById(
+      userId,
+      name,
+      email,
+      password
+    );
+
+    return await this.userRepertory.findById(userId);
+  };
 }

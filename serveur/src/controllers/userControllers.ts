@@ -42,4 +42,21 @@ export default class UserController {
       res.status(409).json({ message: error?.message || "error inconnu" });
     }
   };
+
+  // Put / modifier un utilisateur en ayant son id avec le body name, email, password
+  changeUser = async (req: Request, res: Response) => {
+    try {
+      const { name, email, password } = req.body;
+      const userId = req.user?.userId as number;
+      const user = await this.service.changeUser(userId, name, email, password);
+
+      if (!user) {
+        return res.status(409).json({ message: "Email existant" });
+      }
+      const { password: pass, ...newUser } = user!;
+      return res.status(200).json(newUser);
+    } catch {
+      return res.status(409).json({ message: "Email existant" });
+    }
+  };
 }
