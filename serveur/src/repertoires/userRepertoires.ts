@@ -1,20 +1,17 @@
-import { db } from "../database/db";
-import { Users } from "../database/schema";
+// src/repositories/UserRepository.ts
+import { db } from "./../database/db";
+import { Users } from "./../database/schema"; // On suppose que tu as un type User
 
-export default class UserRepertory {
-  // Trouver un user en fonction du mail
-  findByEmail = async (mail: string) => {
-    let user = await db
+export default class UserRepository {
+  findByEmail = async (email: string) => {
+    return db
       .selectFrom("users")
       .selectAll()
-      .where("email", "=", mail)
-      .executeTakeFirst();
-
-    return user;
+      .where("email", "=", email)
+      .executeTakeFirst(); // Retourne l'utilisateur ou undefined
   };
 
   findById = async (id: number) => {
-    // Obtenir l'utilisateur specifie avec id
     const user = await db
       .selectFrom("users")
       .selectAll()
@@ -24,20 +21,21 @@ export default class UserRepertory {
     return user;
   };
 
-  // Creer un utilisateur dans la base de donnee
-  addUser = async (name: string, email: string, password: string) => {
-    // Inserer un utilisateur
-    let user = await db
+  add = async (name: string, email: string, password: string) => {
+    // On utilise `executeTakeFirstOrThrow` qui lance une erreur si l'insertion échoue.
+    // C'est beaucoup plus sûr.
+    console.log("passe la");
+    console.log({ name, email, password });
+    const i = await db.selectFrom("users").selectAll().execute();
+    console.log(i[0]);
+    const result = await db
       .insertInto("users")
-      .values({
-        name: name,
-        email: email,
-        password: password,
-      })
+      .values({ name, email, password })
       .returningAll()
-      .executeTakeFirst();
-
-    // Si la requete a echouer on obtient insertId = undefined
+      .executeTakeFirstOrThrow();
+    console.log(result);
+    // On retourne un objet User propre, en utilisant l'ID généré.
+    const { password: pass, ...user } = result;
     return user;
   };
 }

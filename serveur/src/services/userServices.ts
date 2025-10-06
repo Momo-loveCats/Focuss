@@ -55,15 +55,15 @@ export default class UserService {
 
   register = async (name: string, email: string, password: string) => {
     // Cryptons le mot de passe
+    console.log("Passe ici");
     password = await bcrypt.hash(password, 10);
 
     // Essayons d'ajouter user
-    const newUser = await this.userRepertory.addUser(name, email, password);
+    const newUser = await this.userRepertory.add(name, email, password);
     if (newUser === undefined) {
       throw new Error("Email deja present");
     }
 
-    const { password: pass, ...user } = newUser;
-    return user;
+    return newUser;
   };
 }

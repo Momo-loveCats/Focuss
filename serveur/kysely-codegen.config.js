@@ -1,4 +1,4 @@
-const path = require('path');
+/*onst path = require('path');
 
 module.exports = {
   // Ton dialecte
@@ -6,11 +6,11 @@ module.exports = {
 
   db: {
     // Ici, le chemin correct vers la base
-    connectionString: `file:${path.join(__dirname, 'src', 'database', 'focus.db')}`,
+    connectionString: `file:${path.join(__dirname, 'focus.sqlite')}`,
   },
 
   // Ton fichier SQL (facultatif selon ton usage)
-  schemaFile: path.join(__dirname, 'src', 'database', 'query.sql'),
+  schemaFile: path.join(__dirname, 'src', 'databas', 'query.sql'),
 
   // Dossier de sortie pour les fichiers générés
   outDir: path.join(__dirname, 'src', 'database', 'schema'),
@@ -19,4 +19,4 @@ module.exports = {
   camelCase: true,
   booleanAsNumber: true,
   enumAsUnion: true,
-};
+}; */

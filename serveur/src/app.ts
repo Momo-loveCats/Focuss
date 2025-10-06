@@ -20,7 +20,7 @@ app.use(express.json()); // important pour parser le JSON
 
 // ----------------------
 // 🚧 Routes à compléter ici plus tard
-app.use("/api/v1/auth", auth);
+app.use("/auth", auth);
 // ----------------------
 
 // Middleware global d’erreur
@@ -31,7 +31,7 @@ app.use(
     res: express.Response,
     next: express.NextFunction
   ) => {
-    console.error("Erreur serveur :", err);
+    console.error("Erreur serveur :", err.stack);
 
     const statusCode = err.status || 500;
     const message =
