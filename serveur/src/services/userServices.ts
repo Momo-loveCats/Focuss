@@ -82,4 +82,6 @@ export default class UserService {
 
     return await this.userRepertory.findById(userId);
   };
+
+  // obtenir des infos sur un utilisateurs
 }

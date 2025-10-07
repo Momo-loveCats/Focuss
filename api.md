@@ -35,7 +35,7 @@ Toutes les actions nécessitent d'être **connecté** avec un **token valide**.
 
 - **PUT /users**
   - 🔹 Modifier les informations de l’utilisateur connecté  
-  - 🔸 Body : `{ name, email, password }`  
+  - 🔸 Body : `{ name, email, password}`  
   - ✅ 200 OK : Renvoie l’objet utilisateur mis à jour  
   - ❌ 403 Forbidden : Tentative de modification d’un autre utilisateur  
   - ❌ 400 Bad Request : Email non unique ou champs invalides  

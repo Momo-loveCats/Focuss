@@ -59,4 +59,16 @@ export default class UserController {
       return res.status(409).json({ message: "Email existant" });
     }
   };
+
+  // get users/:userId
+  obtenirInfo = async (req : Request, res : Response) => {
+    const connecterUserId = req.user!.userId;
+    const searchUser = req.params.userId;
+
+    try {
+
+    } catch {
+        res.status(404).json({message : "utilisateur non trouve"});
+    }
+  };
 }
