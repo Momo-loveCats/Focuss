@@ -51,24 +51,25 @@ export default class UserController {
       const user = await this.service.changeUser(userId, name, email, password);
 
       if (!user) {
-        return res.status(409).json({ message: "Email existant" });
+        return res.status(400).json({ message: "Email existant" });
       }
       const { password: pass, ...newUser } = user!;
       return res.status(200).json(newUser);
     } catch {
-      return res.status(409).json({ message: "Email existant" });
+      return res.status(400).json({ message: "Email existant" });
     }
   };
 
   // get users/:userId
-  obtenirInfo = async (req : Request, res : Response) => {
+  obtenirInfo = async (req: Request, res: Response) => {
     const connecterUserId = req.user!.userId;
-    const searchUser = req.params.userId;
+    const searchUser = Number(req.params.userId);
 
     try {
-
+      const user = this.service.obtenirUser(searchUser);
+      res.json(user);
     } catch {
-        res.status(404).json({message : "utilisateur non trouve"});
+      res.status(404).json({ message: "utilisateur non trouve" });
     }
   };
 }
