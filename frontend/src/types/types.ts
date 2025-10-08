@@ -1,0 +1,76 @@
+import type { ColumnType } from "kysely";
+
+export type Generated<T> = T extends ColumnType<infer S, infer I, infer U>
+  ? ColumnType<S, I | undefined, U>
+  : ColumnType<T, T | undefined, T>;
+
+export interface ChecklistItems {
+  id: Generated<number | null>;
+  isDone: Generated<number | null>;
+  itemIndex: number;
+  name: string;
+  taskId: number;
+}
+
+export interface ProjectMembers {
+  addedAt: Generated<string | null>;
+  projectId: number;
+  role: Generated<string>;
+  userId: number;
+}
+
+export interface Projects {
+  createdAt: Generated<string | null>;
+  createdBy: number;
+  description: string | null;
+  id: Generated<number | null>;
+  name: string;
+}
+
+export interface Tags {
+  id: Generated<number | null>;
+  name: string;
+  projectId: number;
+}
+
+export interface TaskAssignees {
+  assignedAt: Generated<string | null>;
+  taskId: number;
+  userId: number;
+}
+
+export interface Tasks {
+  createdAt: Generated<string | null>;
+  description: string | null;
+  dueDate: string | null;
+  id: Generated<number | null>;
+  name: string;
+  priority: Generated<string | null>;
+  projectId: number;
+  status: Generated<string | null>;
+}
+
+export interface TaskTags {
+  tagId: number;
+  taskId: number;
+}
+
+export interface Users {
+  email: string;
+  id: Generated<number | null>;
+  name: string;
+  password: string;
+}
+
+// Définition de ton modèle utilisateur
+export interface User {
+  id: number;
+  name: string;
+  email: string;
+}
+
+// Réponse du backend pour /auth/login
+export interface LoginResponse {
+  user: User;
+  token: string;
+}

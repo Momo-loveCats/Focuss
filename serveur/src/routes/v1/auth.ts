@@ -7,7 +7,7 @@ const auth = Router();
 const authController = new UserController();
 
 // routes d'authentification
-auth.get("/", authController.login);
+auth.post("/login", authController.login);
 auth.post("/", authController.register);
 
 export default auth;

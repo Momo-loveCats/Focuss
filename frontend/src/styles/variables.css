@@ -1,0 +1,24 @@
+/* Creation ici des variable de base de mon projet 
+   Ces variables seront utiliser comme pieds d'apuui pour le reste du projet
+*/
+
+* {
+    box-sizing: border-box;
+}
+:root {
+    --primary: #2E86AB; /*Couleur de base*/
+    --primary-hover : #1a6a8a;
+    --secondary: #1BBF7D; /* couleur secondaire */
+    --light: #F7F9FC; /* Couleur blanc par default */
+    --dark: #333333; /*Couleur noir par default*/ 
+    --danger: #dc3545; /*Couleur pour signaler qu'un truc va pas*/
+    --success: #28a745; /*Succes*/
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --transition-fast: 0.15s ease-in-out;
+    --transition-base: 0.25s ease;
+    --transition-slow: 0.4s ease;
+    --radius-small: 4px;
+    --radius-meduim: 8px;
+    --font-family-base: 'Segoe UI', sans-serif;
+    
+}
