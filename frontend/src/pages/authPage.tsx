@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import useLogin from "../hooks/loginHook";
 import styles from "./../styles/AuthPage.module.css"
 
@@ -9,7 +10,15 @@ import styles from "./../styles/AuthPage.module.css"
 const AuthPage = () => {
     // etat du composant
     const [isLogin, setLogin, handleLogin] = useLogin();
+    const [password, setPassword] = useState("");
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
 
+    useEffect ( () => {
+        setName("");
+        setPassword("");
+        setEmail("");
+    }, [isLogin]);
     return (
         <form onSubmit={handleLogin} className={styles.form}>
             <div className="logo">
@@ -18,15 +27,15 @@ const AuthPage = () => {
             </div>
             {!isLogin && (<div>
                 <label htmlFor="name" >Nom complet</label>
-                <input type="text" name="name" id="name" required/>
+                <input type="text" name="name" id="name" value={name} onChange={(e) => {setName(e.currentTarget.value)}} required/>
             </div>)}
             <div>
                 <label htmlFor="email">Email</label>
-                <input type="email" name="email" id="email" required/>
+                <input type="email" name="email" id="email" value={email} onChange={(e) => {setEmail(e.currentTarget.value)}} required/>
             </div>
             <div>
                 <label htmlFor="password">Mot de passe</label>
-                <input type="password" name="password" id="password" required/>
+                <input type="password" name="password" id="password" value={password} onChange={(e) => {setPassword(e.currentTarget.value)}} required/>
             </div>
 
             <button>{!isLogin ? "Creer mon compte" : "Me connecter"}</button>

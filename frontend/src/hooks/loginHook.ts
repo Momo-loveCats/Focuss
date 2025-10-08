@@ -36,10 +36,10 @@ const useLogin = () => {
       // on appelle
       const user = await loginn(email, password);
       login(user);
-      navigate("/dashborad");
+      navigate("/dashboard");
     } else {
       await register(email, password, name);
-      navigate("/auth");
+      setLogin(true);
     }
   };
 
