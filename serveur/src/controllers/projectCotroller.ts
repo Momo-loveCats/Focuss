@@ -37,4 +37,32 @@ export default class ProjectController {
     const results = await this.service.createProject(userId, name, description);
     return res.json(results);
   };
+
+  getProject = async (req: Request, res: Response) => {
+    const projectId: number = Number(req.params.projectId);
+    const project = this.service.getProjectId(projectId);
+
+    res.json(project);
+  };
+
+  changeProject = async (req: Request, res: Response) => {
+    const projectId = Number(req.params.projectId);
+    const { name, description } = req.body;
+
+    const project = await this.service.changeProjectById(
+      projectId,
+      name,
+      description
+    );
+
+    res.json(project);
+  };
+
+  deleteProject = async (req: Request, res: Response) => {
+    const projectId = Number(req.params.projectId);
+
+    await this.service.deleteProject(projectId);
+
+    res.json({ response: "Good" });
+  };
 }

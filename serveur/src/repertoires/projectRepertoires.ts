@@ -105,4 +105,23 @@ export default class ProjectRepository {
 
     return result.insertId as unknown as number;
   };
+
+  changeProjectById = async (
+    projectId: number,
+    name: string,
+    description: string
+  ) => {
+    const result = await db
+      .updateTable("projects")
+      .set({
+        name: name,
+        description: description,
+      })
+      .where("id", "=", projectId)
+      .executeTakeFirst();
+  };
+
+  deleteProject = async (projectId: number) => {
+    await db.deleteFrom("projects").where("id", "=", projectId).execute();
+  };
 }

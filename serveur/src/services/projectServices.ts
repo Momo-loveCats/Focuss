@@ -1,3 +1,4 @@
+import { StringifyOptions } from "querystring";
 import { ProjectQuery, Projects } from "../database/schema";
 import ProjectRepository from "../repertoires/projectRepertoires";
 
@@ -22,5 +23,19 @@ export default class ProjectService {
     const resultId = await this.repertory.createProject(project);
     const result = await this.repertory.getProjectByProjectId(resultId);
     return { role: "admin", project: result };
+  };
+
+  getProjectId = async (projectId: number) => {
+    const result = await this.repertory.getProjectByProjectId(projectId);
+    return result;
+  };
+
+  changeProjectById = async (projectId: number, name: string, desc: string) => {
+    await this.repertory.changeProjectById(projectId, name, desc);
+    return await this.getProjectId(projectId);
+  };
+
+  deleteProject = async (projectId: number) => {
+    await this.repertory.deleteProject(projectId);
   };
 }
