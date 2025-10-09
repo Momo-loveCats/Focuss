@@ -10,7 +10,6 @@ export default class ProjectService {
 
   getProjects = async (userId: number, query?: ProjectQuery) => {
     const results = await this.repertory.getProjectByUserId(userId, query);
-
     return results;
   };
 
@@ -22,6 +21,6 @@ export default class ProjectService {
     };
     const resultId = await this.repertory.createProject(project);
     const result = await this.repertory.getProjectByProjectId(resultId);
-    return { role: "Admin", project: result };
+    return { role: "admin", project: result };
   };
 }

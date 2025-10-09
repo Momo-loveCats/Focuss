@@ -64,7 +64,7 @@ export default class UserController {
     const searchUser = Number(req.params.userId);
 
     try {
-      const user = this.service.obtenirUser(searchUser);
+      const user = await this.service.obtenirUser(searchUser);
       res.json(user);
     } catch {
       res.status(404).json({ message: "utilisateur non trouve" });

@@ -1,7 +1,7 @@
 import { resourceLimits } from "worker_threads";
 import { db } from "../database/db";
 import { Generated, ProjectQuery, Projects } from "../database/schema";
-import format from "date-fns/format";
+import { format } from "date-fns";
 // le repoertoire projet va contenir les querys pour obtenir les relations imbriquee
 // project -> user
 
@@ -38,10 +38,15 @@ export default class ProjectRepository {
         "projects.createdAt",
         "pm.role",
       ])
-      .where("pm.projectId", "=", userId);
+      .where("pm.userId", "=", userId);
     if (query) {
       if (query.q) {
-        querys = querys.where("projects.name", "ilike", `%${query.q}%`);
+        console.log(query.q);
+        querys = querys.where(
+          "projects.name",
+          "like",
+          `%${query.q.toLowerCase()}%`
+        );
       }
 
       if (query.role) {
@@ -50,7 +55,7 @@ export default class ProjectRepository {
 
       const sortMapping = {
         name: "projects.name",
-        date: "projects.created_at",
+        date: "projects.createdAt",
         role: "pm.role",
       } as const;
 
@@ -59,19 +64,21 @@ export default class ProjectRepository {
       if (query.sortBy && query.sortBy in sortMapping) {
         sortField = sortMapping[query.sortBy];
       } else {
-        sortField = "projects.created_at";
+        sortField = "projects.createdAt";
       }
 
-      const sortDirection = query.sortOrder === "asc" ? "asc" : "desc";
+      const sortDirection = query.sortOrder
+        ? query.sortOrder === "asc"
+          ? "asc"
+          : "desc"
+        : "asc";
 
       querys = querys.orderBy(ref(sortField), sortDirection);
     }
-
     const result = (await querys.execute()).map((ele) => {
       const { role, ...p } = ele;
       return { role: role, project: p };
     });
-
     return result;
   };
 
@@ -89,7 +96,7 @@ export default class ProjectRepository {
     const result2 = await db
       .insertInto("projectMembers")
       .values({
-        role: "Admin",
+        role: "admin",
         projectId: result.insertId as unknown as number,
         userId: project.createdBy,
         addedAt: format(new Date(), "yyyy-MM-dd"),

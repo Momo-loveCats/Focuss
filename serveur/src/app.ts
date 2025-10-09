@@ -8,6 +8,7 @@ import auth from "./routes/v1/auth";
 import user from "./routes/v1/userRoutes";
 
 import authMiddleware from "./middleware/auth_middleware";
+import project from "./routes/v1/projectRoutes";
 
 // Chargement des variables d'environnement
 dotenv.config();
@@ -26,12 +27,12 @@ app.use(
 );
 app.use(morgan("dev"));
 app.use(express.json()); // important pour parser le JSON
-console.log("ftt");
 
 // ----------------------
 // 🚧 Routes à compléter ici plus tard
 app.use("/api/v1/auth", auth);
 app.use("/api/v1/users", user);
+app.use("/api/v1/projects", project);
 // ----------------------
 
 // Middleware global d’erreur
