@@ -84,4 +84,13 @@ export default class UserService {
   };
 
   // obtenir des infos sur un utilisateurs
+  obtenirUser = async (userId: number) => {
+    const user = await this.userRepertory.findById(userId);
+    const { password, ...withoutPassword } = user!;
+    return withoutPassword;
+  };
+
+  supprimerUser = async (userId: number) => {
+    return (await this.userRepertory.deleteUser(userId)) as unknown as boolean;
+  };
 }

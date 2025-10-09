@@ -12,5 +12,5 @@ user.use(authMiddleware);
 // modifier les informations de l'user
 user.put("/", controller.changeUser);
 user.get("/:userId", controller.obtenirInfo);
-user.delete("/");
+user.delete("/", controller.supprimerUser);
 export default user;

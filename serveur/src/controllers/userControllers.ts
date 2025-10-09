@@ -2,8 +2,6 @@ import { Users } from "../database/schema";
 import { Request, Response } from "express";
 import UserRepertory from "../repertoires/userRepertoires";
 import UserService from "../services/userServices";
-import { normalize } from "path";
-import bcrypt from "bcrypt";
 
 export default class UserController {
   private repertory: UserRepertory;
@@ -70,6 +68,15 @@ export default class UserController {
       res.json(user);
     } catch {
       res.status(404).json({ message: "utilisateur non trouve" });
+    }
+  };
+
+  supprimerUser = async (req: Request, res: Response) => {
+    const userId = req.user?.userId;
+    try {
+      res.json(await this.service.supprimerUser);
+    } catch {
+      res.status(403).json({ message: "Pas autorise" });
     }
   };
 }

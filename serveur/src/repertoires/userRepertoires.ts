@@ -53,4 +53,13 @@ export default class UserRepository {
 
     return result.numUpdatedRows;
   };
+
+  deleteUser = async (userId: number) => {
+    const result = await db
+      .deleteFrom("users")
+      .where("users.id", "=", userId)
+      .executeTakeFirst();
+
+    return result.numDeletedRows;
+  };
 }
