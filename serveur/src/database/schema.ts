@@ -86,3 +86,8 @@ export interface ProjectQuery {
   role?: string;
   q?: string;
 }
+
+export interface TaskGroup {
+  group: string;
+  values: Array<unknown>;
+}
