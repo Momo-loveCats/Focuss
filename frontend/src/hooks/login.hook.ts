@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
-import { loginn, register } from "../api/services/authServices";
+import { loginn, register } from "../api/services/auth.services";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../context/authContext";
+import { AuthContext } from "../context/auth.context";
 //Creation d'interface pour le
 interface FormData {
   email: string;

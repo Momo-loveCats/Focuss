@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { AuthContext } from '../context/authContext';
+import { AuthContext } from '../context/auth.context';
 
 
 // On decrit ici la page du dashboard qui sera associe au context Authcontext

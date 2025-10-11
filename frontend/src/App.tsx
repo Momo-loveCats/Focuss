@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
-import { AuthProvider } from './context/authContext'
+import { AuthProvider } from './context/auth.context'
 import AuthPage from './pages/authPage'
 import ProtectedRoute from './composants/features/protectedRoute'
 import DashboardPage from './pages/dashboardPage'
