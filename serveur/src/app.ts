@@ -4,11 +4,11 @@ import morgan from "morgan";
 import cors from "cors";
 import dotenv from "dotenv";
 
-import auth from "./routes/v1/auth";
-import user from "./routes/v1/userRoutes";
+import auth from "./routes/v1/auth.route";
+import user from "./routes/v1/user.route";
 
-import authMiddleware from "./middleware/auth_middleware";
-import project from "./routes/v1/projectRoutes";
+import authMiddleware from "./middlewares/auth.middleware";
+import project from "./routes/v1/project.route";
 
 // Chargement des variables d'environnement
 dotenv.config();

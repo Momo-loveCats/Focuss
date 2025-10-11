@@ -1,6 +1,6 @@
 // src/repositories/UserRepository.ts
-import { db } from "./../database/db";
-import { Users } from "./../database/schema"; // On suppose que tu as un type User
+import { db } from "../database/db";
+import { Users } from "../database/schema"; // On suppose que tu as un type User
 
 export default class UserRepository {
   findByEmail = async (email: string) => {

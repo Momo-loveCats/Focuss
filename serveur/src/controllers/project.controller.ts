@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import ProjectService from "../services/projectServices";
-import ProjectRepository from "../repertoires/projectRepertoires";
+import ProjectService from "../services/project.service";
+import ProjectRepository from "../repertoires/project.repertory";
 import { ProjectQuery } from "../database/schema";
 
 export default class ProjectController {

@@ -1,8 +1,8 @@
 import { Router } from "express";
-import ProjectController from "../../controllers/projectCotroller";
-import authMiddleware from "../../middleware/auth_middleware";
-import getRoleMiddleware from "../../middleware/getRoleMiddleware";
-import roleMiddleware from "../../middleware/role_middleware";
+import ProjectController from "../../controllers/project.controller";
+import authMiddleware from "../../middlewares/auth.middleware";
+import getRoleMiddleware from "../../middlewares/getRole.middleware";
+import roleMiddleware from "../../middlewares/role.middleware";
 
 // initialisation du router
 const project = Router();

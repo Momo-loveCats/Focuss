@@ -1,4 +1,4 @@
-import UserRepertory from "../repertoires/userRepertoires";
+import UserRepertory from "../repertoires/user.repertory";
 import { Users } from "../database/schema";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";

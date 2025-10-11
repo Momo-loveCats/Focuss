@@ -1,6 +1,6 @@
-import PMRepertory from "../repertoires/projectMenberRepertoire";
-import UserRepository from "../repertoires/userRepertoires";
-import UserService from "./userServices";
+import PMRepertory from "../repertoires/projectMenber.repertory";
+import UserRepository from "../repertoires/user.repertory";
+import UserService from "./user.service";
 
 /// Verification des entree des service a verifier obligatoirement
 export default class PMService {

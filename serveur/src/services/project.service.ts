@@ -1,6 +1,6 @@
 import { StringifyOptions } from "querystring";
 import { ProjectQuery, Projects } from "../database/schema";
-import ProjectRepository from "../repertoires/projectRepertoires";
+import ProjectRepository from "../repertoires/project.repertory";
 
 export default class ProjectService {
   private repertory: ProjectRepository;

@@ -2,7 +2,7 @@
 // Les roles sont differents en fonctions du projet donc il faut s'adapter aussi
 
 import { NextFunction, Request, Response } from "express";
-import ProjectRepository from "../repertoires/projectRepertoires";
+import ProjectRepository from "../repertoires/project.repertory";
 
 const repository = new ProjectRepository();
 

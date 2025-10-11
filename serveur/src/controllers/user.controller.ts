@@ -1,7 +1,7 @@
 import { Users } from "../database/schema";
 import { Request, Response } from "express";
-import UserRepertory from "../repertoires/userRepertoires";
-import UserService from "../services/userServices";
+import UserRepertory from "../repertoires/user.repertory";
+import UserService from "../services/user.service";
 
 export default class UserController {
   private repertory: UserRepertory;
