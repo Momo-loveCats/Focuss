@@ -7,9 +7,6 @@ const tagTask = Router();
 
 const controller = new TaskController();
 
-tagTask.use(authMiddleware);
-tagTask.use(getRoleMiddleware);
-
 tagTask.get("/", controller.obtenirTags);
 tagTask.post("/", controller.addTags);
 tagTask.delete("/:tagId", controller.deleteTags);

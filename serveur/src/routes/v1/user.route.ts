@@ -2,6 +2,8 @@ import { Router } from "express";
 import UserController from "../../controllers/user.controller";
 import authMiddleware from "../../middlewares/auth.middleware";
 import app from "../../app";
+import validate from "../../middlewares/validations.middleware";
+import { CreateUser } from "./../../shared/validations/user.schema";
 
 const user = Router();
 const controller = new UserController();
@@ -10,7 +12,7 @@ const controller = new UserController();
 user.use(authMiddleware);
 
 // modifier les informations de l'user
-user.put("/", controller.changeUser);
+user.put("/", validate(CreateUser), controller.changeUser);
 user.get("/:userId", controller.obtenirInfo);
 user.delete("/", controller.supprimerUser);
 export default user;

@@ -7,7 +7,7 @@ export default class TaskController {
   private service = new TaskService(this.repertory);
 
   addTask = async (req: Request, res: Response) => {
-    const { name, description, status, priority, duetime } = req.body;
+    const { name, description, status, priority, dueDate } = req.body;
     const projectId = req.params.projectId;
     await this.service.addTask(
       Number(projectId),
@@ -15,7 +15,7 @@ export default class TaskController {
       description,
       status,
       priority,
-      duetime
+      dueDate
     );
     return res.json();
   };

@@ -6,6 +6,14 @@ import roleMiddleware from "../../middlewares/role.middleware";
 import pm from "./projectMenber.route";
 import tag from "./tag.route";
 import task from "./taskProject.router";
+import validate from "../../middlewares/validations.middleware";
+import {
+  ChangeProjectSchema,
+  CreateProjectSchema,
+  DeleteProjectSchema,
+  GetProjectSchema,
+  GetProjectsSchema,
+} from "../../shared/validations/project.schema";
 
 // initialisation du router
 const project = Router();
@@ -17,17 +25,23 @@ const controller = new ProjectController();
 project.use(authMiddleware);
 
 // Routes
-project.get("/", controller.getprojects);
-project.post("/", controller.createProject);
+project.get("/", validate(GetProjectsSchema), controller.getprojects);
+project.post("/", validate(CreateProjectSchema), controller.createProject);
 
 // on obtiens le role de userId pour les routews qui viennnent
 project.use(getRoleMiddleware);
 
 // obtenir les infos d'un projet unique
-project.get("/:projectId", controller.getProject);
-project.put("/:projectId", roleMiddleware(["admin"]), controller.changeProject);
+project.get("/:projectId", validate(GetProjectSchema), controller.getProject);
+project.put(
+  "/:projectId",
+  validate(ChangeProjectSchema),
+  roleMiddleware(["admin"]),
+  controller.changeProject
+);
 project.delete(
   "/:projectId",
+  validate(DeleteProjectSchema),
   roleMiddleware(["admin"]),
   controller.deleteProject
 );

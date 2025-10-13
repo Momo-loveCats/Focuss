@@ -9,6 +9,7 @@ import user from "./routes/v1/user.route";
 
 import authMiddleware from "./middlewares/auth.middleware";
 import project from "./routes/v1/project.route";
+import tasks from "./routes/v1/tasks.router";
 
 // Chargement des variables d'environnement
 dotenv.config();
@@ -33,6 +34,8 @@ app.use(express.json()); // important pour parser le JSON
 app.use("/api/v1/auth", auth);
 app.use("/api/v1/users", user);
 app.use("/api/v1/projects", project);
+app.use("/api/v1/tasks/:taskId", tasks)
+
 // ----------------------
 
 // Middleware global d’erreur
