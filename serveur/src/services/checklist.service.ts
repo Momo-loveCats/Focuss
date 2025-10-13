@@ -1,4 +1,4 @@
-import ChecklistRepersitory from "../repertoires/checklistRepersitory";
+import ChecklistRepersitory from "../repertoires/checklist.repertory";
 
 export default class CheclistService {
   private repertory: ChecklistRepersitory;

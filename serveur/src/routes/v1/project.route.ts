@@ -3,6 +3,9 @@ import ProjectController from "../../controllers/project.controller";
 import authMiddleware from "../../middlewares/auth.middleware";
 import getRoleMiddleware from "../../middlewares/getRole.middleware";
 import roleMiddleware from "../../middlewares/role.middleware";
+import pm from "./projectMenber.route";
+import tag from "./tag.route";
+import task from "./taskProject.router";
 
 // initialisation du router
 const project = Router();
@@ -28,5 +31,9 @@ project.delete(
   roleMiddleware(["admin"]),
   controller.deleteProject
 );
+
+project.use("/:projectId/menbers", pm);
+project.use("/:projectId/tags", tag);
+project.use("/:projectId/tags", task);
 
 export default project;

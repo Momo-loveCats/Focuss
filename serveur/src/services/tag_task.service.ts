@@ -1,4 +1,4 @@
-import TTRepertory from "../repertoires/tagTasks";
+import TTRepertory from "../repertoires/tagTasks.repertory";
 
 export default class TagTaskService {
   private repertory: TTRepertory;

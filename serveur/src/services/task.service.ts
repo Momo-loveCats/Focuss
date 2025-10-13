@@ -1,6 +1,6 @@
 import { access } from "fs";
 import { Generated, TaskGroup, Tasks } from "../database/schema";
-import TaskRepository from "../repertoires/taskRepertory";
+import TaskRepository from "../repertoires/task.repertory";
 
 export default class TaskService {
   private repertory: TaskRepository;
@@ -63,7 +63,7 @@ export default class TaskService {
         break;
 
       default:
-        initial = ["to do", "in_progress", "done", "expired"].map((ele) => {
+        initial = ["todo", "in_progress", "done", "expired"].map((ele) => {
           const t: TaskGroup = { group: ele, values: [] };
           return t;
         });

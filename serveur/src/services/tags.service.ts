@@ -1,4 +1,4 @@
-import TagRepertory from "../repertoires/tagsRepertory";
+import TagRepertory from "../repertoires/tags.repertory";
 
 // Service des tags pour les projets
 export default class TagsService {

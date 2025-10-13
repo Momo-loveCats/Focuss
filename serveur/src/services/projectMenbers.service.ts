@@ -26,7 +26,7 @@ export default class PMService {
       throw new Error("Utilisateur introuvable");
     }
     if (isMenber) {
-      throw new Error("Utilisateur introuveble");
+      throw new Error("Utilisateur deja menbre");
     }
 
     await this.repertory.adduser(user.id!, projectId, role);

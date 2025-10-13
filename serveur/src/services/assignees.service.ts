@@ -1,4 +1,4 @@
-import AssigneesRepertory from "../repertoires/assigneesRepertory";
+import AssigneesRepertory from "../repertoires/assignees.repertory";
 
 export default class AssigneesService {
   private repertory: AssigneesRepertory;
