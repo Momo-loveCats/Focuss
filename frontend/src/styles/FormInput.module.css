@@ -1,0 +1,62 @@
+@import url('./variables.css');
+
+.label{
+    display: block;
+    text-align: start;
+    padding: 5px 0;
+    width: 100%;
+    font-weight: 600;
+    color: var(--dark);
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.input {
+    display: block;
+    width: 100%;
+    background-color: rgba(248, 250, 252, 0.8);
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-size: 1rem;
+    color: var(--dark);
+    transition: all var(--transition-base);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.input::placeholder {
+    color: #94a3b8;
+    font-weight: 400;
+}
+
+.input:focus {
+    border-color: var(--primary);
+    background-color: white;
+    box-shadow: 
+        0 0 0 3px rgba(102, 126, 234, 0.1),
+        0 4px 12px rgba(102, 126, 234, 0.1);
+    outline: none;
+    transform: translateY(-1px);
+}
+
+.input:hover {
+    border-color: #cbd5e1;
+    background-color: #f8fafc;
+}
+
+.input.valid {
+    border-color: var(--success);
+}
+
+.input.invalid {
+    border-color: var(--danger);
+}
+
+.error{
+    background-color: var(--danger);
+    color : white;
+    font-size: small;
+}
+
