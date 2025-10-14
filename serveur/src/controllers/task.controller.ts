@@ -9,13 +9,15 @@ export default class TaskController {
   addTask = async (req: Request, res: Response) => {
     const { name, description, status, priority, dueDate } = req.body;
     const projectId = req.params.projectId;
+    const userId = req.user?.userId;
     await this.service.addTask(
       Number(projectId),
       name,
       description,
       status,
       priority,
-      dueDate
+      dueDate,
+      userId!
     );
     return res.json();
   };
@@ -24,11 +26,12 @@ export default class TaskController {
     const userId = req.user?.userId;
     const role = req.user?.role;
     const projectId = req.params.projectId;
+    console.log(role, userId, projectId);
     const group = req.query.group as string;
 
     const tasks = await this.service.obtenirTask(
       Number(projectId),
-      userId!,
+      Number(userId!),
       role!,
       group
     );

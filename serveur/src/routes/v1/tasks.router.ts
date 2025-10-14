@@ -3,10 +3,9 @@ import authMiddleware from "../../middlewares/auth.middleware";
 import getRoleMiddleware from "../../middlewares/getRole.middleware";
 import tagTask from "./taskTag.route";
 import assignee from "./assignnes.route";
-import task from "./taskProject.router";
 import checklist from "./checklist.route";
 
-const tasks = Router();
+const tasks = Router({ mergeParams: true });
 
 tasks.use(authMiddleware);
 tasks.use(getRoleMiddleware);

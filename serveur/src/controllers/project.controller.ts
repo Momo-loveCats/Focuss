@@ -40,7 +40,7 @@ export default class ProjectController {
 
   getProject = async (req: Request, res: Response) => {
     const projectId: number = Number(req.params.projectId);
-    const project = this.service.getProjectId(projectId);
+    const project = await this.service.getProjectId(projectId);
 
     res.json(project);
   };
@@ -49,13 +49,17 @@ export default class ProjectController {
     const projectId = Number(req.params.projectId);
     const { name, description } = req.body;
 
-    const project = await this.service.changeProjectById(
-      projectId,
-      name,
-      description
-    );
+    try {
+      const project = await this.service.changeProjectById(
+        projectId,
+        name,
+        description
+      );
 
-    res.json(project);
+      res.json(project);
+    } catch (err: any) {
+      res.status(409).json({ message: err.message });
+    }
   };
 
   deleteProject = async (req: Request, res: Response) => {

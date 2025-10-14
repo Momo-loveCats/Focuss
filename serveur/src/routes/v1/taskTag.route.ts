@@ -3,7 +3,7 @@ import TaskController from "../../controllers/tagTask.controller";
 import authMiddleware from "../../middlewares/auth.middleware";
 import getRoleMiddleware from "../../middlewares/getRole.middleware";
 
-const tagTask = Router();
+const tagTask = Router({ mergeParams: true });
 
 const controller = new TaskController();
 

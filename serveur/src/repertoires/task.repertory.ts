@@ -3,7 +3,7 @@ import { db } from "../database/db";
 import { Tasks } from "../database/schema";
 
 export default class TaskRepository {
-  addTask = async (task: Omit<Tasks, "id" | "createdAt">) => {
+  addTask = async (task: Omit<Tasks, "id" | "createdAt">, userId: number) => {
     const result = await db
       .insertInto("tasks")
       .values({
@@ -17,6 +17,14 @@ export default class TaskRepository {
       })
       .executeTakeFirst();
 
+    await db
+      .insertInto("taskAssignees")
+      .values({
+        assignedAt: format(new Date(), "yyyy-MM-dd"),
+        taskId: result.insertId as unknown as number,
+        userId: userId,
+      })
+      .execute();
     return result.insertId;
   };
 

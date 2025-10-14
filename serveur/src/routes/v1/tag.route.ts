@@ -2,7 +2,7 @@ import { Router } from "express";
 import TagController from "../../controllers/tag.controller";
 import roleMiddleware from "../../middlewares/role.middleware";
 
-const tag = Router();
+const tag = Router({ mergeParams: true });
 
 const controller = new TagController();
 

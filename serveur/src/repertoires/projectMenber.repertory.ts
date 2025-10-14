@@ -16,15 +16,13 @@ export default class PMRepertory {
       .where("pm.projectId", "=", projectId)
       .orderBy("users.name", "asc")
       .execute();
-    const results = users.map((ele) => {
-      const { role, ...user } = ele;
-      return { role, user };
-    });
-    return results;
+    console.log(users);
+    return users;
   };
 
   //Peut produire une erreur donc faire attention lors de l'utilisation
   adduser = async (userId: number, projectId: number, role: string) => {
+    console.log(role);
     const result = await db
       .insertInto("projectMembers")
       .values({

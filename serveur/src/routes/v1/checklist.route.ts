@@ -7,7 +7,7 @@ import {
 } from "../../shared/validations/checklist.schema";
 import validate from "../../middlewares/validations.middleware";
 
-const checklist = Router();
+const checklist = Router({ mergeParams: true });
 
 const controller = new ChecklistController();
 

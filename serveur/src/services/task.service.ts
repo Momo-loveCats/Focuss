@@ -15,7 +15,8 @@ export default class TaskService {
     desc: string,
     status: string,
     priority: string,
-    dueTime: string
+    dueTime: string,
+    userId: number
   ) => {
     const tasks: Omit<Tasks, "id" | "createdAt"> = {
       projectId: projectId,
@@ -26,7 +27,7 @@ export default class TaskService {
       dueDate: dueTime,
     };
 
-    await this.repertory.addTask(tasks);
+    await this.repertory.addTask(tasks, userId);
   };
 
   deleteTask = async (taskId: number) => {
@@ -44,6 +45,7 @@ export default class TaskService {
 
     // Definir notre interface
     // Peux etre optimiser
+    console.log(tasks);
     let tasksGroup: Array<TaskGroup>;
     let initial: Array<TaskGroup>;
     switch (group) {
@@ -54,9 +56,7 @@ export default class TaskService {
         });
         tasksGroup = tasks.reduce<TaskGroup[]>((acc, ele) => {
           const { priority, ...rest } = ele;
-          const index = acc.findIndex((ele) => {
-            ele.group === priority;
-          });
+          const index = acc.findIndex((ele) => ele.group === priority);
           acc[index].values.push(rest);
           return acc;
         }, initial);
@@ -69,9 +69,7 @@ export default class TaskService {
         });
         tasksGroup = tasks.reduce<TaskGroup[]>((acc, ele) => {
           const { status, ...rest } = ele;
-          const index = acc.findIndex((ele) => {
-            ele.group === status;
-          });
+          const index = acc.findIndex((ele) => ele.group === status);
           acc[index].values.push(rest);
           return acc;
         }, initial);
@@ -90,6 +88,13 @@ export default class TaskService {
     dueDate: string
   ) => {
     //validation de type
-    await this.changeTask(taskId, name, desc, priority, status, dueDate);
+    await this.repertory.changeTask(
+      taskId,
+      name,
+      desc,
+      priority,
+      status,
+      dueDate
+    );
   };
 }

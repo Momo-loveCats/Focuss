@@ -27,7 +27,11 @@ const validate = <T extends RequestSchema>(schema: T) => {
           res
             .status(400)
             // Mieux comprendre les erreurs apres
-            .json({ mesaage: "Validation a echouer" })
+            .json({
+              mesaage: "Validation a echouer",
+              error: error.message,
+              stack: error.stack,
+            })
         );
       }
 

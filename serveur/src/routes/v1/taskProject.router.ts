@@ -9,7 +9,7 @@ import {
   ObtenirTaskSchema,
 } from "./../../shared/validations/task.schema";
 
-const task = Router();
+const task = Router({ mergeParams: true });
 
 const controller = new TaskController();
 

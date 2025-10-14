@@ -31,6 +31,10 @@ export default class ProjectService {
   };
 
   changeProjectById = async (projectId: number, name: string, desc: string) => {
+    const project = await this.repertory.getProjectByProjectId(projectId);
+    if (!project) {
+      throw new Error("Le projet n'hexiste pas");
+    }
     await this.repertory.changeProjectById(projectId, name, desc);
     return await this.getProjectId(projectId);
   };

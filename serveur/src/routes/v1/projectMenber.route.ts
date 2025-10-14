@@ -3,7 +3,7 @@ import PMcontroller from "../../controllers/projectMenber.controller";
 import roleMiddleware from "../../middlewares/role.middleware";
 
 // Initialistion du router
-const pm = Router();
+const pm = Router({ mergeParams: true });
 
 // controller
 const controller = new PMcontroller();

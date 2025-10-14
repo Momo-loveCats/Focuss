@@ -8,6 +8,7 @@ export default class PMcontroller {
 
   obtenirMenber = async (req: Request, res: Response) => {
     const projectId = Number(req.params.projectId);
+    console.log(projectId);
     const users = await this.service.obtenirUsersByProjectId(projectId);
 
     return res.json(users);

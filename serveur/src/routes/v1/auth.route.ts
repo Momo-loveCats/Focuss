@@ -1,7 +1,7 @@
 import { Router } from "express";
 import UserController from "../../controllers/user.controller";
 
-const auth = Router();
+const auth = Router({ mergeParams: true });
 
 import validate from "../../middlewares/validations.middleware";
 import { CreateUser, LoginUser } from "./../../shared/validations/user.schema";

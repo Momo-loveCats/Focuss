@@ -8,7 +8,7 @@ import {
   ObtenirAssigneesSchema,
 } from "./../../shared/validations/assignees.schema";
 
-const assignee = Router();
+const assignee = Router({ mergeParams: true });
 
 const controller = new AssigneeController();
 

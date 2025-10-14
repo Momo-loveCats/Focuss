@@ -18,8 +18,9 @@ export default class PMService {
   addMenber = async (email: string, role: string, projectId: number) => {
     const user = await new UserRepository().findByEmail(email);
     const menbers = await this.repertory.getMenbers(projectId);
+    console.log(user?.id);
     const isMenber = menbers.some((ele) => {
-      ele.user.id === user?.id;
+      ele.id === user?.id;
     });
 
     if (!user) {

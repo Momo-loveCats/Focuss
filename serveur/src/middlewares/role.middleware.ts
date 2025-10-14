@@ -16,7 +16,6 @@ const roleMiddleware = (roles: string[]) => {
     if (!requis) {
       return rep.status(403).json({ message: "Action non autorise" });
     }
-
     next();
   };
 };

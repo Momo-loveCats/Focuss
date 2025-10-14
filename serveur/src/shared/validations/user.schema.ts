@@ -26,3 +26,9 @@ export const LoginUser = z.object({
     password: protect,
   }),
 });
+
+export const GetUser = z.object({
+  params: z.object({
+    userId: idSchema,
+  }),
+});

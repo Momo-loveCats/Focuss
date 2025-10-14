@@ -22,6 +22,6 @@ export default class TagsService {
 
   obtenirTags = async (projectId: number, q?: string) => {
     const tags = await this.repertory.getTags(projectId, q);
-    return tags.map((ele) => ele.name);
+    return tags;
   };
 }

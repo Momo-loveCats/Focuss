@@ -1,3 +1,28 @@
+-- ==========================================
+-- 🧱 INITIALISATION DE LA BASE DE DONNÉES
+-- ==========================================
+PRAGMA foreign_keys = ON;
+
+-- Suppression des tables si elles existent
+DROP TABLE IF EXISTS checklist_items;
+
+DROP TABLE IF EXISTS task_tags;
+
+DROP TABLE IF EXISTS task_assignees;
+
+DROP TABLE IF EXISTS tasks;
+
+DROP TABLE IF EXISTS tags;
+
+DROP TABLE IF EXISTS project_members;
+
+DROP TABLE IF EXISTS projects;
+
+DROP TABLE IF EXISTS users;
+
+-- ==========================================
+-- 👤 TABLE USERS
+-- ==========================================
 CREATE TABLE
     users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -6,6 +31,9 @@ CREATE TABLE
         password VARCHAR(255) NOT NULL
     );
 
+-- ==========================================
+-- 🗂️ TABLE PROJECTS
+-- ==========================================
 CREATE TABLE
     projects (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -16,6 +44,9 @@ CREATE TABLE
         FOREIGN KEY (created_by) REFERENCES users (id) ON DELETE CASCADE
     );
 
+-- ==========================================
+-- 👥 TABLE PROJECT MEMBERS
+-- ==========================================
 CREATE TABLE
     project_members (
         project_id INTEGER NOT NULL,
@@ -27,6 +58,9 @@ CREATE TABLE
         FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
     );
 
+-- ==========================================
+-- 🏷️ TABLE TAGS
+-- ==========================================
 CREATE TABLE
     tags (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -36,6 +70,9 @@ CREATE TABLE
         UNIQUE (project_id, name)
     );
 
+-- ==========================================
+-- ✅ TABLE TASKS
+-- ==========================================
 CREATE TABLE
     tasks (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -52,6 +89,9 @@ CREATE TABLE
         UNIQUE (project_id, name)
     );
 
+-- ==========================================
+-- 🧑‍💻 TABLE TASK ASSIGNEES
+-- ==========================================
 CREATE TABLE
     task_assignees (
         task_id INTEGER NOT NULL,
@@ -62,6 +102,9 @@ CREATE TABLE
         FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
     );
 
+-- ==========================================
+-- 🔗 TABLE TASK TAGS
+-- ==========================================
 CREATE TABLE
     task_tags (
         task_id INTEGER NOT NULL,
@@ -71,6 +114,9 @@ CREATE TABLE
         FOREIGN KEY (tag_id) REFERENCES tags (id) ON DELETE CASCADE
     );
 
+-- ==========================================
+-- 📋 TABLE CHECKLIST ITEMS
+-- ==========================================
 CREATE TABLE
     checklist_items (
         id INTEGER PRIMARY KEY AUTOINCREMENT,

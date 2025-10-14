@@ -14,8 +14,11 @@ const getRoleMiddleware = async (
   // Deux manniere d'avoir les ids$
 
   let userId = req.user?.userId;
-  let projectId = req.body.projectId || req.params.projectId || undefined;
-
+  let projectId = req.body.projectId
+    ? req.body.projectId
+    : req.params.projectId;
+  console.log("req.params:", req.params);
+  console.log("req.body:", req.body);
   // on verifie si les id existent
   if (!userId || !projectId) {
     return res
@@ -24,7 +27,7 @@ const getRoleMiddleware = async (
   }
 
   // Obtenons le role de user dans project
-  let role = await repository.getRoleByids(userId, projectId);
+  let role = await repository.getRoleByids(userId, Number(projectId));
 
   // ne participe pas au projet
   if (!role) {

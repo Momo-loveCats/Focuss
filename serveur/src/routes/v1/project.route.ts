@@ -16,7 +16,7 @@ import {
 } from "../../shared/validations/project.schema";
 
 // initialisation du router
-const project = Router();
+const project = Router({ mergeParams: true });
 
 // controller de projet
 const controller = new ProjectController();
@@ -29,7 +29,7 @@ project.get("/", validate(GetProjectsSchema), controller.getprojects);
 project.post("/", validate(CreateProjectSchema), controller.createProject);
 
 // on obtiens le role de userId pour les routews qui viennnent
-project.use(getRoleMiddleware);
+project.use("/:projectId", getRoleMiddleware);
 
 // obtenir les infos d'un projet unique
 project.get("/:projectId", validate(GetProjectSchema), controller.getProject);
@@ -48,6 +48,6 @@ project.delete(
 
 project.use("/:projectId/menbers", pm);
 project.use("/:projectId/tags", tag);
-project.use("/:projectId/tags", task);
+project.use("/:projectId/tasks", task);
 
 export default project;

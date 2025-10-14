@@ -20,7 +20,7 @@ export default class TagRepertory {
   getTags = async (projectId: number, q?: string) => {
     let query = db
       .selectFrom("tags")
-      .select("name")
+      .selectAll()
       .where("projectId", "=", projectId);
 
     if (q) {
