@@ -44,7 +44,7 @@ export const FormAuth = () => {
         draft.name = false;
       }
     });
-  }, [isLogin, setValidField]);
+  }, [isLogin]);
 
   // 🧠 Callback appelé depuis <FormInput>
   const handleChange = (name: string, isValid: boolean) => {
@@ -61,16 +61,16 @@ export const FormAuth = () => {
       </div>
 
       {!isLogin && (
-        <FormInput name="name" schema={nameSchema} onChange={handleChange} />
+        <FormInput key={`name-${isLogin}`} name="name" schema={nameSchema} onChange={handleChange} />
       )}
-      <FormInput name="email" schema={emailSchema} onChange={handleChange} />
-      <FormInput name="password" schema={passwordSchema} onChange={handleChange} />
+      <FormInput key={`email-${isLogin}`} name="email" schema={emailSchema} onChange={handleChange} />
+      <FormInput key={`password-${isLogin}`} name="password" schema={passwordSchema} onChange={handleChange} />
 
       <button className={styles.button}>
         {isLogin ? "Me connecter" : "Créer mon compte"}
       </button>
 
-      {message && (
+      {message != "" && (
         <div className={clsx(styles.info, styles.invalid)}>
           <p>{message}</p>
         </div>

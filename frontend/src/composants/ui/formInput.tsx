@@ -3,6 +3,7 @@ import style from './../../styles/FormInput.module.css'
 import type { ZodString} from "zod/v3";
 import useValidate from "../../hooks/validateInput.hook";
 import clsx from 'clsx';
+import type React from 'react';
 
 type FormInput = {
     name : string
@@ -11,24 +12,28 @@ type FormInput = {
 };
 
  const FormInput = ({name, schema, onChange} : FormInput) => {
-    const [isValid, values, messages, changeValue]  = useValidate(schema);
+    const [isValid, values, messages, changeValue, changeFocus]  = useValidate(schema);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         changeValue(e);
-        onChange(name, isValid);
       };
+
+    const handleBlur = (e : React.FocusEvent<HTMLInputElement>) => {
+        changeFocus(e);
+        onChange(name, isValid);
+    }
 
     return (
         <div>
             <label htmlFor={name} className={style.label}>{name}</label>
             <input type={name === "name"? "text" : name} placeholder={name} className={clsx(
                 style.input,
-                isValid ? style.valid : style.invalid
-            )} value={values} onChange={handleChange} />
+                isValid || values === ""? style.valid : style.invalid
+            )} value={values} onChange={handleChange} onBlur={handleBlur} />
             {!isValid && (
                 <div className={style.error}>
                     <ul>
-                        {messages.map((str) => <li>{str}</li>)}
+                        {messages.map((str, index) => <li key={index}>{str}</li>)}
                     </ul>
                 </div>
             )}

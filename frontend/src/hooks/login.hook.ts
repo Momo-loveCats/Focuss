@@ -42,14 +42,15 @@ const useLogin = () => {
 
       try {
         if (isLogin) {
-          login(email, password);
+          await login(email, password);
           navigate("/dashboard");
         } else {
-          register(email, password, name);
+          await register(email, password, name);
           setLogin(true); // repasse en mode login
           setMessage("");
         }
       } catch (error: any) {
+        console.log(error.message);
         setMessage(error.message || "Une erreur est survenue");
       }
     };
