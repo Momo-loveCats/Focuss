@@ -16,20 +16,27 @@ type FormInput = {
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         changeValue(e);
+        const result = schema.safeParse(e.target.value);
+        const isValidNow = result.success;
+    
+        onChange(name, isValidNow);
       };
 
     const handleBlur = (e : React.FocusEvent<HTMLInputElement>) => {
         changeFocus(e);
-        onChange(name, isValid);
+        const result = schema.safeParse(e.target.value);
+        const isValidNow = result.success;
+    
+        onChange(name, isValidNow);
     }
 
     return (
         <div>
             <label htmlFor={name} className={style.label}>{name}</label>
-            <input type={name === "name"? "text" : name} placeholder={name} className={clsx(
+            <input type={name === "name"? "text" : name} name={name} placeholder={name} className={clsx(
                 style.input,
                 isValid || values === ""? style.valid : style.invalid
-            )} value={values} onChange={handleChange} onBlur={handleBlur} />
+            )} value={values} onChange={handleChange} onBlur={handleBlur} onInput={handleChange}/>
             {!isValid && (
                 <div className={style.error}>
                     <ul>

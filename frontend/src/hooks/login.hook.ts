@@ -33,7 +33,10 @@ const useLogin = () => {
       data.name = data.name?.trim();
       data.password = data.password?.trim();
       const { email, name, password } = data;
-      const isValid = Object.values(validField).every((v) => v);
+      const isValid = Object.values(validField).every((v) => {
+        console.log(v);
+        return v;
+      });
 
       if (!isValid) {
         setMessage("Certains champs sont invalides");
@@ -50,7 +53,6 @@ const useLogin = () => {
           setMessage("");
         }
       } catch (error: any) {
-        console.log(error.message);
         setMessage(error.message || "Une erreur est survenue");
       }
     };

@@ -1,0 +1,99 @@
+@import url('./variables.css');
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--primary);
+  color: var(--light);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0 0 var(--radius-meduim) var(--radius-meduim);
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: background-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+/* --- LOGO / BRAND --- */
+.navbar-brand {
+  font-family: var(--font-family-base);
+  font-weight: 700;
+  font-size: 1.4rem;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: transform var(--transition-fast);
+}
+
+.navbar-brand:hover {
+  transform: scale(1.05);
+}
+
+/* --- MENU --- */
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* --- LINKS --- */
+.navbar-menu a {
+  color: var(--light);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius-small);
+  transition: all var(--transition-fast);
+}
+
+.navbar-menu a:hover {
+  background-color: var(--primary-hover);
+}
+
+/* --- BUTTON (Logout) --- */
+.navbar-menu button {
+  background-color: var(--light);
+  color: var(--primary);
+  border: none;
+  border-radius: var(--radius-small);
+  padding: 0.45rem 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow);
+}
+
+.navbar-menu button:hover {
+  background-color: var(--secondary);
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* --- FOCUS STYLES ACCESSIBLES --- */
+.navbar-menu a:focus,
+.navbar-menu button:focus {
+  outline: 2px solid var(--secondary);
+  outline-offset: 3px;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 700px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+
+  .navbar-menu {
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .navbar-menu a,
+  .navbar-menu button {
+    font-size: 0.95rem;
+  }
+}

@@ -1,4 +1,4 @@
-import express from "express";
+import express, { NextFunction } from "express";
 import helmet from "helmet";
 import morgan from "morgan";
 import cors from "cors";
@@ -26,7 +26,7 @@ app.use(
     credentials: true,
   })
 );
-app.use(morgan("dev"));
+app.use(morgan("combined"));
 app.use(express.json()); // important pour parser le JSON
 
 // ----------------------
@@ -34,7 +34,7 @@ app.use(express.json()); // important pour parser le JSON
 app.use("/api/v1/auth", auth);
 app.use("/api/v1/users", user);
 app.use("/api/v1/projects", project);
-app.use("/api/v1/tasks/:taskId", tasks)
+app.use("/api/v1/tasks/:taskId", tasks);
 
 // ----------------------
 

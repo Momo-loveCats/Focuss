@@ -29,7 +29,6 @@ export default class UserRepository {
       .values({ name, email, password })
       .returningAll()
       .executeTakeFirstOrThrow();
-    console.log(result);
     // On retourne un objet User propre, en utilisant l'ID généré.
     const { password: pass, ...user } = result;
     return user;
