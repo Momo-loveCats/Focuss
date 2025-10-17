@@ -1,0 +1,103 @@
+@import url('./variables.css');
+
+/* === CARD GLOBALE === */
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 340px;
+  position: relative;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-meduim);
+  color: var(--light);
+  box-shadow:
+    0 0 20px rgba(0, 255, 255, 0.05),
+    inset 0 0 12px rgba(255, 255, 255, 0.05);
+  transition: all var(--transition-base);
+  overflow: hidden;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  animation: fadeUp 0.6s ease-out;
+}
+
+/* === GLOW DYNAMIQUE EN FOND === */
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 20%, rgba(0, 255, 255, 0.15), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+}
+
+/* === HOVER ANIMÉ === */
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow:
+    0 0 25px rgba(0, 255, 255, 0.15),
+    0 0 50px rgba(0, 200, 255, 0.1);
+  border-color: rgba(0, 255, 255, 0.3);
+  background: linear-gradient(
+    135deg,
+    rgba(0, 200, 255, 0.1),
+    rgba(0, 255, 170, 0.1)
+  );
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+/* === TEXTE ET CONTENU === */
+.card h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #00e0ff;
+  text-shadow: 0 0 6px rgba(0, 255, 255, 0.5);
+  z-index: 1;
+}
+
+.card p {
+  font-size: 0.95rem;
+  color: rgba(220, 235, 255, 0.8);
+  text-align: center;
+  z-index: 1;
+  line-height: 1.4;
+}
+
+/* === ICÔNES OU ACTIONS === */
+.card svg {
+  margin-bottom: 10px;
+  color: #00ffee;
+  filter: drop-shadow(0 0 4px rgba(0, 255, 255, 0.4));
+  transition: transform var(--transition-fast);
+  z-index: 1;
+}
+
+.card:hover svg {
+  transform: scale(1.15);
+  color: #00ffaa;
+}
+
+/* === ANIMATION D’ENTRÉE === */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .card {
+    height: 280px;
+  }
+}

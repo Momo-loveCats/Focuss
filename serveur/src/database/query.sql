@@ -13,7 +13,7 @@ CREATE TABLE
         description TEXT,
         created_by INTEGER NOT NULL,
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (created_by) REFERENCES users (id)
+        FOREIGN KEY (created_by) REFERENCES users (id) ON DELETE CASCADE
     );
 
 CREATE TABLE
@@ -23,8 +23,8 @@ CREATE TABLE
         role TEXT CHECK (role IN ('admin', 'responsable', 'membre')) NOT NULL DEFAULT 'membre',
         added_at DATETIME DEFAULT CURRENT_TIMESTAMP,
         PRIMARY KEY (project_id, user_id),
-        FOREIGN KEY (project_id) REFERENCES projects (id),
-        FOREIGN KEY (user_id) REFERENCES users (id)
+        FOREIGN KEY (project_id) REFERENCES projects (id) ON DELETE CASCADE,
+        FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
     );
 
 CREATE TABLE
@@ -32,7 +32,7 @@ CREATE TABLE
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         project_id INTEGER NOT NULL,
         name VARCHAR(50) NOT NULL,
-        FOREIGN KEY (project_id) REFERENCES projects (id),
+        FOREIGN KEY (project_id) REFERENCES projects (id) ON DELETE CASCADE,
         UNIQUE (project_id, name)
     );
 
@@ -48,7 +48,7 @@ CREATE TABLE
         priority TEXT CHECK (priority IN ('none', 'low', 'medium', 'high')) DEFAULT 'none',
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
         due_date DATETIME,
-        FOREIGN KEY (project_id) REFERENCES projects (id),
+        FOREIGN KEY (project_id) REFERENCES projects (id) ON DELETE CASCADE,
         UNIQUE (project_id, name)
     );
 
@@ -58,8 +58,8 @@ CREATE TABLE
         user_id INTEGER NOT NULL,
         assigned_at DATETIME DEFAULT CURRENT_TIMESTAMP,
         PRIMARY KEY (task_id, user_id),
-        FOREIGN KEY (task_id) REFERENCES tasks (id),
-        FOREIGN KEY (user_id) REFERENCES users (id)
+        FOREIGN KEY (task_id) REFERENCES tasks (id) ON DELETE CASCADE,
+        FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
     );
 
 CREATE TABLE
@@ -67,8 +67,8 @@ CREATE TABLE
         task_id INTEGER NOT NULL,
         tag_id INTEGER NOT NULL,
         PRIMARY KEY (task_id, tag_id),
-        FOREIGN KEY (task_id) REFERENCES tasks (id),
-        FOREIGN KEY (tag_id) REFERENCES tags (id)
+        FOREIGN KEY (task_id) REFERENCES tasks (id) ON DELETE CASCADE,
+        FOREIGN KEY (tag_id) REFERENCES tags (id) ON DELETE CASCADE
     );
 
 CREATE TABLE
@@ -78,7 +78,7 @@ CREATE TABLE
         name VARCHAR(100) NOT NULL,
         is_done BOOLEAN DEFAULT FALSE,
         item_index INTEGER NOT NULL,
-        FOREIGN KEY (task_id) REFERENCES tasks (id),
+        FOREIGN KEY (task_id) REFERENCES tasks (id) ON DELETE CASCADE,
         UNIQUE (task_id, name),
         UNIQUE (task_id, item_index)
     );

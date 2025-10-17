@@ -1,0 +1,109 @@
+@import url("./variables.css");
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(145deg, var(--surface), var(--surface-alt));
+  border-bottom: var(--border);
+  box-shadow: var(--shadow);
+  color: var(--light);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0 0 var(--radius-large) var(--radius-large);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  transition: all var(--transition-base);
+}
+
+.navbar:hover {
+  box-shadow: var(--glow-primary);
+}
+
+/* === LOGO / BRAND === */
+.navbar-brand {
+  font-family: var(--font-family-title);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--primary);
+  text-shadow: 0 0 8px rgba(11, 132, 243, 0.5);
+  cursor: pointer;
+  transition: transform var(--transition-fast);
+}
+
+.navbar-brand:hover {
+  transform: scale(1.05);
+}
+
+/* === MENU === */
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+/* === LINKS === */
+.navbar-menu a {
+  color: var(--light);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.45rem 0.9rem;
+  border-radius: var(--radius-small);
+  transition: all var(--transition-fast);
+  background: transparent;
+}
+
+.navbar-menu a:hover {
+  background: var(--blur-bg);
+  box-shadow: var(--glow-secondary);
+  color: var(--secondary);
+}
+
+/* === BUTTON === */
+.navbar-menu button {
+  background: var(--primary);
+  color: var(--light);
+  border: none;
+  border-radius: var(--radius-small);
+  padding: 0.45rem 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: var(--glow-primary);
+}
+
+.navbar-menu button:hover {
+  background: var(--primary-hover);
+  box-shadow: var(--glow-secondary);
+  transform: translateY(-2px);
+}
+
+/* === FOCUS === */
+.navbar-menu a:focus,
+.navbar-menu button:focus {
+  outline: 2px solid var(--secondary);
+  outline-offset: 3px;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 700px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+    gap: 0.6rem;
+  }
+
+  .navbar-menu {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .navbar-menu a,
+  .navbar-menu button {
+    font-size: 0.95rem;
+  }
+}

@@ -79,3 +79,15 @@ export interface DB {
   taskTags: TaskTags;
   users: Users;
 }
+
+export interface ProjectQuery {
+  sortBy?: "date" | "name" | "role";
+  sortOrder?: "asc" | "desc";
+  role?: string;
+  q?: string;
+}
+
+export interface TaskGroup {
+  group: string;
+  values: Array<unknown>;
+}
