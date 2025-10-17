@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { type Users, type User } from '../types/types';
+import {  type User } from '../types/types';
 import { loginn, registerr } from "../api/services/auth.services";
 // le context d'utilisation va contenir l'user de l'utilisateur
 // tous les enfants de ce context aura acces a cet id nom , email
@@ -12,8 +12,9 @@ interface AuthContextType {
   }
 
 // Nous allons creer notre type d'authentification
-// eslint-disable-next-line react-refresh/only-export-components
+ 
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const AuthContext = createContext<AuthContextType | null>(null);
 
 
@@ -26,7 +27,7 @@ export const AuthProvider : React.FC<{ children: React.ReactNode }> = ({children
             const response = await loginn(email, password);
             localStorage.setItem("token", response.token);
             setUser(response.user);
-        } catch (error) {
+        } catch  {
             throw new Error("Email ou mot de passe invalide");
         }
     }
@@ -39,7 +40,7 @@ export const AuthProvider : React.FC<{ children: React.ReactNode }> = ({children
     const register = async (email : string, password : string, name : string) => {
         try {
             await registerr(email, password, name);
-        } catch (error) {
+        } catch  {
             throw new Error("Compte existant");
         }
     }

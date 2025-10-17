@@ -14,6 +14,12 @@ export const GetProjectsSchema = z.object({
 });
 
 export const ProjectSchema = z.object({
-  name: z.string().trim().min(1, "Le nom doit pas etre vide"),
+  name: z
+    .string()
+    .trim()
+    .nonempty("Le nom doit pas etre vide")
+    .min(3, "Nom trop court"),
   description: z.string(),
 });
+
+export type ProjectAdd = z.infer<typeof ProjectSchema>;

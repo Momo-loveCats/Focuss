@@ -1,5 +1,5 @@
 import clientApi from "../axiosClient";
-import { type LoginResponse, type Users, type User } from "../../types/types";
+import { type LoginResponse, type User } from "../../types/types";
 import axios from "axios";
 
 // ce fichier contient toute les requete d'authentification avec axios et le backend

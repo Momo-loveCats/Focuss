@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { AuthContext } from '../context/auth.context';
 import NavBar from '../composants/ui/navBar';
+import Dashboard from '../composants/ui/dashbord';
 
 
 // On decrit ici la page du dashboard qui sera associe au context Authcontext
@@ -10,7 +11,9 @@ const DashboardPage = () => {
     return (
             <>
             <NavBar/>
-            <h1>Bievenue {user?.name}</h1></>
+            <h1>Bievenue {user?.name}</h1>
+            <Dashboard/>
+            </>
     );
 };
 

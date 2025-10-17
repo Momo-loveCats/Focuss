@@ -14,9 +14,9 @@ const getRoleMiddleware = async (
   // Deux manniere d'avoir les ids$
 
   let userId = req.user?.userId;
-  let projectId = req.body.projectId
-    ? req.body.projectId
-    : req.params.projectId;
+  let projectId = req.body?.projectId
+    ? req.body?.projectId
+    : req.params?.projectId;
   console.log("req.params:", req.params);
   console.log("req.body:", req.body);
   // on verifie si les id existent

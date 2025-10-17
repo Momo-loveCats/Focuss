@@ -1,24 +1,38 @@
-/* Creation ici des variable de base de mon projet 
-   Ces variables seront utiliser comme pieds d'apuui pour le reste du projet
-*/
 
-* {
-    box-sizing: border-box;
-}
+
 :root {
-    --primary: #2E86AB; /*Couleur de base*/
-    --primary-hover : #1a6a8a;
-    --secondary: #1BBF7D; /* couleur secondaire */
-    --light: #F7F9FC; /* Couleur blanc par default */
-    --dark: #333333; /*Couleur noir par default*/ 
-    --danger: #dc3545; /*Couleur pour signaler qu'un truc va pas*/
-    --success: #28a745; /*Succes*/
-    --shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    /* 🎨 Palette principale — sombre, futuriste et lisible */
+    --primary: #0b84f3;
+    --primary-hover: #166fe5;
+    --secondary: #00d09c;
+  
+    --background: #0d1117;
+    --surface: #161b22;
+    --surface-alt: #1c2128;
+    --light: #e6edf3;
+    --dark: #010409;
+  
+    --danger: #ff4d4d;
+    --success: #2ecc71;
+    --warning: #f1c40f;
+  
+    /* 🧱 Effets visuels */
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    --glow-primary: 0 0 10px rgba(11, 132, 243, 0.5);
+    --glow-secondary: 0 0 8px rgba(0, 208, 156, 0.4);
+    --border: 1px solid rgba(255, 255, 255, 0.08);
+    --blur-bg: rgba(255, 255, 255, 0.04);
+  
+    /* ⚙️ Transitions / Radius / Font */
     --transition-fast: 0.15s ease-in-out;
     --transition-base: 0.25s ease;
     --transition-slow: 0.4s ease;
-    --radius-small: 4px;
-    --radius-meduim: 8px;
-    --font-family-base: 'Segoe UI', sans-serif;
-    
-}
+    --radius-small: 6px;
+    --radius-meduim: 10px;
+    --radius-large: 18px;
+  
+    --font-family-base: "Inter", "Segoe UI", sans-serif;
+    --font-family-title: "Orbitron", "Rajdhani", sans-serif;
+  }
+  
+  

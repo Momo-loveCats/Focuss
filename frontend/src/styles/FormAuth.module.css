@@ -1,219 +1,202 @@
 @import url('./variables.css');
 
-
+/* === FORMULAIRE === */
 .form {
-    margin : 0 auto;
-    width: 100%;
-    max-width: 440px;
-    background: white;
-    padding: 40px 35px;
-    color: var(--dark);
-    border-radius: 20px;
-    box-shadow: 
-        0 20px 40px rgba(0, 0, 0, 0.1),
-        0 8px 24px rgba(0, 0, 0, 0.08);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    transform: translateY(0);
-    transition: all var(--transition-slow);
+  margin: 0 auto;
+  width: 100%;
+  max-width: 460px;
+  background: rgba(15, 15, 25, 0.75);
+  color: var(--light);
+  padding: 40px 35px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow:
+    0 0 20px rgba(0, 255, 255, 0.05),
+    inset 0 0 12px rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(18px);
+  transform: translateY(0);
+  transition: all var(--transition-slow);
+  position: relative;
 }
 
 .form:hover {
-    transform: translateY(-5px);
-    box-shadow: 
-        0 25px 50px rgba(0, 0, 0, 0.15),
-        0 12px 30px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+  box-shadow:
+    0 0 25px rgba(0, 255, 255, 0.15),
+    inset 0 0 18px rgba(255, 255, 255, 0.05);
 }
 
-
-.button {
-    display: block;
-    width: 100%;
-    text-align: center;
-    font-weight: 700;
-    background: linear-gradient(135deg, var(--primary), var(--primary-hover));
-    color: white;
-    border: none;
-    padding: 16px 24px;
-    border-radius: 12px;
-    font-size: 1.1rem;
-    transition: all var(--transition-base);
-    cursor: pointer;
-    box-shadow: 
-        0 4px 12px rgba(102, 126, 234, 0.3),
-        0 2px 4px rgba(102, 126, 234, 0.2);
-    position: relative;
-    overflow: hidden;
-}
-
-.button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    transition: left 0.5s;
-}
-
-.button:hover {
-    background: linear-gradient(135deg, var(--primary-hover), var(--primary));
-    box-shadow: 
-        0 6px 20px rgba(102, 126, 234, 0.4),
-        0 3px 8px rgba(102, 126, 234, 0.3);
-    transform: translateY(-2px);
-}
-
-.button:hover::before {
-    left: 100%;
-}
-
-.button:active {
-    transform: translateY(0);
-    box-shadow: 
-        0 2px 8px rgba(102, 126, 234, 0.3),
-        0 1px 3px rgba(102, 126, 234, 0.2);
-}
-
-.button:disabled {
-    background: #cbd5e1;
-    box-shadow: none;
-    transform: none;
-    cursor: not-allowed;
-}
-
+/* === LOGO / HEADER === */
 .logo {
-    text-align: center;
-    margin-bottom: 30px;
+  text-align: center;
+  margin-bottom: 35px;
 }
 
 .logo h1 {
-    color: var(--primary);
-    font-size: 2.2rem;
-    font-weight: 800;
-    margin-bottom: 8px;
-    background: linear-gradient(135deg, var(--primary), var(--primary-hover));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    letter-spacing: -0.5px;
+  font-size: 2.4rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, #00f5ff, #0077ff, #00ffaa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 1px;
+  text-shadow: 0 0 12px rgba(0, 255, 255, 0.6);
 }
 
 .logo p {
-    color: #64748b;
-    font-size: 1rem;
-    font-weight: 400;
-    margin: 0;
-    opacity: 0.8;
+  color: rgba(200, 220, 255, 0.75);
+  font-size: 1rem;
+  margin-top: 5px;
+  letter-spacing: 0.5px;
 }
 
+/* === BOUTON PRINCIPAL === */
+.button {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-weight: 700;
+  background: linear-gradient(135deg, #00bcd4, #0077ff);
+  color: #fff;
+  border: none;
+  padding: 16px 24px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  transition: all var(--transition-base);
+  cursor: pointer;
+  box-shadow:
+    0 0 10px rgba(0, 180, 255, 0.4),
+    0 0 20px rgba(0, 150, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.6s;
+}
+
+.button:hover {
+  background: linear-gradient(135deg, #00ffaa, #00bcd4);
+  box-shadow:
+    0 0 20px rgba(0, 255, 255, 0.5),
+    0 0 40px rgba(0, 150, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.button:hover::before {
+  left: 100%;
+}
+
+.button:active {
+  transform: translateY(0);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+.button:disabled {
+  background: #334155;
+  box-shadow: none;
+  cursor: not-allowed;
+  color: #94a3b8;
+}
+
+/* === LIENS ET INFOS === */
 .info {
-    text-align: center;
-    margin-top: 25px;
-    padding-top: 25px;
-    border-top: 1px solid #e2e8f0;
+  text-align: center;
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .info p {
-    color: #64748b;
-    margin-bottom: 15px;
-    font-size: 0.95rem;
+  color: rgba(200, 220, 255, 0.7);
+  margin-bottom: 15px;
+  font-size: 0.95rem;
 }
 
 .info a {
-    color: var(--primary);
-    text-decoration: none;
-    font-weight: 600;
-    transition: all var(--transition-base);
-    position: relative;
-    padding: 5px 0;
+  color: #00e0ff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all var(--transition-base);
+  position: relative;
 }
 
 .info a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--primary);
-    transition: width var(--transition-base);
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #00e0ff;
+  transition: width var(--transition-base);
 }
 
 .info a:hover {
-    color: var(--primary-hover);
+  color: #00ffaa;
+  text-shadow: 0 0 6px rgba(0, 255, 200, 0.6);
 }
 
 .info a:hover::after {
-    width: 100%;
+  width: 100%;
 }
 
-.form > * {
-    margin-bottom: 25px;
-}
-
-/* Animation d'entrée */
-@keyframes formEntrance {
-    from {
-        opacity: 0;
-        transform: translateY(30px) scale(0.95);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
+/* === ANIMATION D’APPARITION === */
+@keyframes holographicEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.96);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
 }
 
 .form {
-    animation: formEntrance 0.6s ease-out;
+  animation: holographicEntrance 0.7s ease-out;
 }
 
-/* États de validation */
-
-
-.invalid {
-    color: var(--danger)
-}
-
-/* Responsive */
-@media (max-width: 480px) {
-    .form {
-        padding: 30px 25px;
-        margin: 10px;
-        border-radius: 16px;
-    }
-    
-    #root {
-        padding: 10px;
-        align-items: flex-start;
-        padding-top: 40px;
-    }
-    
-    .logo h1 {
-        font-size: 1.8rem;
-    }
-}
-
-/* Effet de profondeur amélioré */
+/* === EFFET DE CONTOUR LUMINEUX === */
 .form::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(135deg, 
-        rgba(102, 126, 234, 0.1), 
-        rgba(118, 75, 162, 0.1), 
-        rgba(102, 126, 234, 0.1));
-    border-radius: 22px;
-    z-index: -1;
-    opacity: 0;
-    transition: opacity var(--transition-slow);
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 20px;
+  background: linear-gradient(135deg,
+    rgba(0, 255, 255, 0.15),
+    rgba(0, 150, 255, 0.1),
+    rgba(0, 255, 170, 0.15)
+  );
+  z-index: -1;
+  opacity: 0;
+  transition: opacity var(--transition-slow);
 }
 
 .form:hover::before {
-    opacity: 1;
+  opacity: 1;
 }
 
+/* === RESPONSIVE === */
+@media (max-width: 480px) {
+  .form {
+    padding: 30px 25px;
+    margin: 10px;
+    border-radius: 16px;
+  }
+
+  .logo h1 {
+    font-size: 1.8rem;
+  }
+}
